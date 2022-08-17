@@ -28,6 +28,7 @@
     "mysql2": "^2.2.5",
     "nodemailer": "^6.6.2",
     "nodemon": "^2.0.12",
+    "qrcode": "^1.5.1",
     "sequelize": "^6.6.2",
     "swagger-jsdoc": "^7.0.0-rc.6",
     "swagger-ui-express": "^4.3.0",

@@ -37,13 +37,6 @@
  *                  type: string
  *                email:
  *                  type: string
- *                type:
- *                  type: object
- *                  properties:
- *                    uuid:
- *                      type: string
- *                    name:
- *                      type: string
  *                enable:
  *                  type: boolean
  *            token:

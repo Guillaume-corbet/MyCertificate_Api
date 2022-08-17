@@ -21,10 +21,6 @@ const login = async (body) => {
                     username: body.username
                 },
                 attributes: Users.attribute.all,
-                include: {
-                    model: dbService.UserType,
-                    attributes: UserType.attribute.all
-                }
             }
         );
         if (!user) {

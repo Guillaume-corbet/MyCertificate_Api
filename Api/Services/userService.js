@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
 import bcrypt from 'bcrypt'
 import {errorService, dbService} from './index.js'
-import {Users, UserType} from '../Models/index.js'
+import {Users} from '../Models/index.js'
 import {v4} from 'uuid'
 
 dotenv.config();
@@ -140,11 +140,11 @@ const getOne = async (user, userUuid) => {
 }
 
 const edit = async (user, uuid, data) => {
-    let user = await getOne(user, uuid);
+    let myUser = await getOne(user, uuid);
     let res = await dbService.Users.update(
         {
-            username: data.username != undefined ? data.username : user.username,
-            email: data.email != undefined ? data.email : user.email,
+            username: data.username != undefined ? data.username : myUser.username,
+            email: data.email != undefined ? data.email : myUser.email,
         },
         {
             where: 

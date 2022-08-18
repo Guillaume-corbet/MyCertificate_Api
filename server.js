@@ -4,7 +4,9 @@ import bodyParser from 'body-parser'
 import swaggerJsDoc from 'swagger-jsdoc'
 import swaggerUi from 'swagger-ui-express'
 import dotenv from 'dotenv'
+import fileUpload from 'express-fileupload'
 import {
+    certificateRouter,
     userRouter
 } from './Api/Routers/index.js'
 import {dbService, mailService, mailTemplateService} from './Api/Services/index.js'
@@ -30,6 +32,10 @@ const swaggerOptions = {
 
 const swaggerDocs = await swaggerJsDoc((swaggerOptions));
 
+server.use(fileUpload({
+    useTempFiles : true,
+    tempFileDir : '/tmp/'
+}));
 server.use(cors());
 server.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
@@ -46,6 +52,8 @@ mailTemplateService.initTemplate(process.env.PATH_TEMPLATE_MAIL);
 server.use(bodyParser.urlencoded({extended: true}));
 server.use(bodyParser.json());
 server.use('/v1/user/', userRouter);
+server.use('/v1/certificate/', certificateRouter);
+
 
 server.use(redirectUnmatched);
 

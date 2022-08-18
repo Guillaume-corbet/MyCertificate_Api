@@ -23,6 +23,7 @@
     "express": "^4.17.1",
     "express-fileupload": "^1.4.0",
     "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
     "mocha": "^8.4.0",
     "mocha-junit-reporter": "^2.0.2",
     "mysql": "^2.18.1",

@@ -1,6 +1,7 @@
 import Seq from 'sequelize'
 import dotenv from 'dotenv'
 import {
+    Certificates,
     Users,
 } from '../Models/index.js'
 
@@ -32,9 +33,11 @@ else{
 }
 
 db.Users = Users.model(db.sequelize, Seq.DataTypes);
+db.Certificates = Certificates.model(db.sequelize, Seq.DataTypes);
 
 /* FOREIGN KEYS */
 
-
+db.Certificates.belongsTo(db.Users, {foreignKey: 'owner'});
+db.Users.hasMany(db.Certificates, {foreignKey: 'owner'});
 
 export default db;

@@ -13,7 +13,7 @@ const addCertificate = async (req, res) => {
 const getCertificate = async (req, res) => {
     res.setHeader('Content-Type', 'application/json');
     try {
-        let resultat = await certicateService.getCertificate(req.user, "aaaaa");
+        let resultat = await certicateService.getCertificate(req.user, req.query.userUuid);
         res.status(201).send(JSON.stringify(resultat));
     } catch (e) {
         res.status(e.code ? e.code : 401).send(JSON.stringify({error: e.message}));
